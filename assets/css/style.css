@@ -1,0 +1,635 @@
+/* ============================================
+   RESET E CONFIGURAZIONE BASE
+   ============================================ */
+
+/* Reset margini e padding, box-sizing uniforme */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Variabili CSS per colori del tema */
+:root {
+    --primary-color: #808080;  /* Grigio principale */
+    --dark-color: #4d4d4d;     /* Grigio scuro */
+}
+
+/* ============================================
+   STILI BODY E LAYOUT GENERALE
+   ============================================ */
+
+/* Body con sfondo fisso e layout centrato */
+body {
+    font-family: 'Arial';
+    background-image: url('../img/sfondo3.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* ============================================
+   MENU DI NAVIGAZIONE
+   ============================================ */
+
+/* Stile del menu di navigazione superiore */
+body > div:first-child {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding: 15px 30px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+body > div:first-child table {
+    border-collapse: collapse;
+}
+
+body > div:first-child td {
+    padding: 10px 20px;
+}
+
+body > div:first-child a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+body > div:first-child a:hover {
+    color: var(--primary-color);
+}
+
+/* ============================================
+   CONTAINER PRINCIPALE E TITOLO
+   ============================================ */
+
+/* Container principale con sfondo semi-trasparente */
+.container {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    max-width: 950px;
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    margin-bottom: 20px;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================
+   CONTROLLI E PULSANTI DI DIFFICOLTÀ
+   ============================================ */
+
+/* Area controlli */
+.controls {
+    margin-bottom: 20px;
+}
+
+.left-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.difficulty {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
+}
+
+.difficulty label {
+    font-weight: bold;
+    color: white;
+    margin-right: 10px;
+}
+
+.btn-difficulty {
+    background: transparent;
+    border: none;
+    padding: 8px 0px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+    transition: all 0.3s;
+}
+
+.btn-difficulty:hover {
+    color: var(--primary-color);
+    text-shadow: 0 0 10px var(--primary-color);
+}
+
+.btn-difficulty.active {
+    color: var(--primary-color);
+    text-shadow: 0 0 10px var(--primary-color);
+}
+
+.game-controls {
+    display: none;
+}
+
+.btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: all 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+    background: var(--dark-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn.active {
+    background: #28a745;
+    box-shadow: 0 0 10px rgba(40, 167, 69, 0.5);
+}
+
+.message {
+    position: fixed;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 30px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    opacity: 0;
+    transition: all 0.5s ease;
+    min-width: 200px;
+    text-align: center;
+}
+
+.message::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid inherit;
+}
+
+.message.show {
+    top: 80px;
+    opacity: 1;
+    animation: slideDown 0.5s ease forwards;
+}
+
+@keyframes slideDown {
+    0% {
+        top: -100px;
+        opacity: 0;
+    }
+    100% {
+        top: 80px;
+        opacity: 1;
+    }
+}
+
+.message.success {
+    background: #d4edda;
+    color: #155724;
+    border: 2px solid #155724;
+}
+
+.message.success::after {
+    border-top-color: #d4edda;
+}
+
+.message.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 2px solid #721c24;
+}
+
+.message.error::after {
+    border-top-color: #f8d7da;
+}
+
+.message.info {
+    background: #d1ecf1;
+    color: #0c5460;
+    border: 2px solid #0c5460;
+}
+
+.message.info::after {
+    border-top-color: #d1ecf1;
+}
+
+/* ============================================
+   GRIGLIA SUDOKU E CELLE
+   ============================================ */
+
+/* Layout principale dell'area di gioco */
+.game-area {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.sudoku-board {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 0;
+    width: 100%;
+    max-width: 450px;
+    min-width: 300px;
+    margin: 0;
+    background: #000;
+    border: 3px solid #000;
+    border-radius: 5px;
+    flex-shrink: 0;
+}
+
+/* Singola cella della griglia Sudoku */
+.cell {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border: 1px solid #ccc;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.cell input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    background: transparent;
+    outline: none;
+    color: #333;
+}
+
+.cell-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.cell-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    background: transparent;
+    outline: none;
+    color: transparent;
+    caret-color: transparent;
+    z-index: 1;
+}
+
+/* Container griglia 3x3 per visualizzare note multiple */
+.notes-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    padding: 2px;
+    gap: 1px;
+    pointer-events: none;
+}
+
+.note {
+    font-size: 10px;
+    color: #666;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: normal;
+}
+
+/* Cella con numero fisso (non modificabile dal giocatore) */
+.cell.fixed {
+    background: #f0f0f0;
+    cursor: default;
+}
+
+.cell.fixed input {
+    color: #000;
+    font-weight: bold;
+    cursor: default;
+}
+
+.cell.selected {
+    background: #bbdefb;
+}
+
+.cell.error {
+    background: #ffcdd2;
+}
+
+.cell.correct {
+    background: #c8e6c9;
+}
+
+/* ============================================
+   BORDI SPESSI PER BLOCCHI 3x3
+   ============================================ */
+
+/* Bordi verticali tra blocchi (colonne 3 e 6) */
+.cell:nth-child(9n+3),
+.cell:nth-child(9n+6) {
+    border-right: 2px solid #000;
+}
+
+.cell:nth-child(n+19):nth-child(-n+27),
+.cell:nth-child(n+46):nth-child(-n+54) {
+    border-bottom: 2px solid #000;
+}
+
+/* ============================================
+   PALETTE NUMERI E PANNELLO DESTRO
+   ============================================ */
+
+/* Pannello destro con controlli e palette */
+.right-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.palette-controls {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.control-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.number-palette {
+    background: transparent;
+    padding: 20px;
+    border-radius: 10px;
+    min-width: 250px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-palette {
+    background: transparent;
+    color: white;
+    border: none;
+    padding: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: all 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-palette .icon {
+    font-size: 24px;
+    line-height: 1;
+}
+
+.btn-palette .label {
+    font-size: 11px;
+    line-height: 1;
+}
+
+.btn-palette:hover {
+    background: transparent;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btn-palette:active {
+    transform: translateY(0);
+}
+
+.btn-palette.active {
+    background: transparent;
+    box-shadow: 0 0 10px rgba(40, 167, 69, 0.5);
+}
+
+.number-palette h3 {
+    color: white;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+}
+
+/* Griglia 3x3 per i pulsanti numerici 1-9 */
+.numbers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+/* Singolo pulsante numerico (1-9) */
+.number-btn {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    font-size: 64px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    min-height: 100px;
+}
+
+.number-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    transform: scale(1.1);
+    border-color: var(--primary-color);
+}
+
+.number-btn.selected {
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 15px var(--primary-color);
+}
+
+/* Indicatore di completamento (tutte e 9 le occorrenze inserite) */
+.number-btn.completed::after {
+    content: '✓';
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #28a745;
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    border: 2px solid white;
+}
+
+/* ============================================
+   TIMER E STATISTICHE
+   ============================================ */
+
+/* Timer con pulsante pausa */
+.timer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2px;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    max-width: 210px;
+}
+
+.timer #pause-btn {
+    padding: 6px;
+    font-size: 16px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+/* ============================================
+   STATISTICHE DI GIOCO
+   ============================================ */
+
+/* Area statistiche errori e suggerimenti */
+.game-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+}
+
+.game-stats .stat {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.game-stats .stat span:first-child {
+    color: white;
+}
+
+.game-stats .stat span:last-child {
+    color: #ff6b6b;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+/* Ottimizzazione per schermi piccoli */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+    
+    .game-area {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .left-section {
+        width: 100%;
+        align-items: center;
+    }
+    
+    .difficulty {
+        justify-content: center;
+    }
+    
+    .number-palette {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .cell input {
+        font-size: 18px;
+    }
+    
+    .btn {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+    
+    .btn-difficulty {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+}

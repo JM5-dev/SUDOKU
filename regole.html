@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tag per codifica caratteri e responsive design -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUDOKU</title>
+    
+    <!-- Favicon personalizzata -->
+    <link rel="icon" type="image/png" href="assets/img/icon.png">
+    
+    <!-- Foglio di stile per la pagina regole -->
+    <link rel="stylesheet" href="assets/css/style-regole.css">
+</head>
+<body>
+    <!-- Menu di navigazione -->
+    <div>
+        <table>
+            <tr>
+                <td><a href="index.html">Gioca</a></td>
+                <td><a href="regole.html">Regole</a></td>
+            </tr>
+        </table>
+    </div>
+    
+    <!-- Container principale della pagina regole -->
+    <div class="container">
+        <h1>REGOLE DEL SUDOKU</h1>
+        
+        <div class="content">
+            <!-- Sezione introduttiva con obiettivo del gioco -->
+            <section class="intro-section">
+                <h2>🎯 Obiettivo del Gioco</h2>
+                <p>L'obiettivo del Sudoku è riempire una griglia 9×9 con numeri da 1 a 9, rispettando alcune regole fondamentali. Alcune celle contengono già dei numeri (indizi) che non possono essere modificati.</p>
+            </section>
+            
+            <!-- Griglia con le tre regole fondamentali del Sudoku -->
+            <section class="rules-grid">
+                <h2>📋 Le Tre Regole Fondamentali</h2>
+                <div class="rules-container">
+                    <div class="rule-card">
+                        <div class="rule-number">1</div>
+                        <h3>Regola della Riga</h3>
+                        <p>Ogni <strong>riga orizzontale</strong> deve contenere tutti i numeri da <strong>1 a 9</strong>, senza ripetizioni.</p>
+                    </div>
+                    
+                    <div class="rule-card">
+                        <div class="rule-number">2</div>
+                        <h3>Regola della Colonna</h3>
+                        <p>Ogni <strong>colonna verticale</strong> deve contenere tutti i numeri da <strong>1 a 9</strong>, senza ripetizioni.</p>
+                    </div>
+                    
+                    <div class="rule-card">
+                        <div class="rule-number">3</div>
+                        <h3>Regola del Blocco 3×3</h3>
+                        <p>Ogni <strong>blocco 3×3</strong> (quadrato evidenziato) deve contenere tutti i numeri da <strong>1 a 9</strong>, senza ripetizioni.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Sezione a due colonne: guida al gioco e strategie -->
+            <section class="two-column-section">
+                <div class="column">
+                    <h2>🎮 Come Si Gioca</h2>
+                    <ol class="steps">
+                        <li><strong>Osserva la griglia:</strong> Inizia analizzando i numeri già presenti nella griglia.</li>
+                        <li><strong>Individua le celle vuote:</strong> Cerca le celle dove puoi dedurre con certezza quale numero inserire.</li>
+                        <li><strong>Verifica le regole:</strong> Prima di inserire un numero, assicurati che non violi nessuna delle tre regole.</li>
+                        <li><strong>Procedi per eliminazione:</strong> Se in una riga mancano solo pochi numeri, sarà più facile capire quale va dove.</li>
+                        <li><strong>Completa la griglia:</strong> Continua fino a riempire tutte le celle rispettando le regole.</li>
+                    </ol>
+                </div>
+                
+                <div class="column">
+                    <h2>💡 Strategie e Consigli</h2>
+                    <ul class="tips">
+                        <li><strong>Inizia dalle righe/colonne/blocchi più pieni:</strong> Dove ci sono più numeri, è più facile dedurre quelli mancanti.</li>
+                        <li><strong>Usa la tecnica dello "scanning":</strong> Controlla sistematicamente dove può andare un numero specifico.</li>
+                        <li><strong>Cerca i "candidati unici":</strong> Se un numero può andare solo in una cella di un blocco, quello è il suo posto.</li>
+                        <li><strong>Fai attenzione agli errori:</strong> Un errore può compromettere l'intero puzzle!</li>
+                        <li><strong>Pratica regolarmente:</strong> Più giochi, più diventerai veloce e preciso.</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <!-- Sezione funzionalità del gioco con card informative -->
+            <section class="features-section">
+                <h2>🛠️ Funzioni del Gioco</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🆕</div>
+                        <h3>Nuova Partita</h3>
+                        <p>Genera un nuovo puzzle con la difficoltà selezionata</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💡</div>
+                        <h3>Suggerimento</h3>
+                        <p>Riempie automaticamente una cella casuale</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⏱️</div>
+                        <h3>Timer</h3>
+                        <p>Tiene traccia del tempo impiegato</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">↩️</div>
+                        <h3>Annulla</h3>
+                        <p>Torna indietro di una mossa</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Call to action per iniziare a giocare -->
+            <div class="cta">
+                <a href="index.html" class="play-button">Inizia a Giocare! 🎮</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script per animazioni ed effetti della pagina regole -->
+    <script src="assets/js/script-regole.js"></script>
+</body>
+</html>
