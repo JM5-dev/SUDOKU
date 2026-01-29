@@ -12,7 +12,7 @@
 **Un'implementazione completa e interattiva del classico gioco Sudoku**
 
 <!-- Link rapidi alle sezioni principali -->
-[Gioca Ora](#come-giocare) • [Caratteristiche](#caratteristiche) • [Installazione](#installazione) • [Demo](#demo)
+[Gioca Ora](https://jm5-dev.github.io/SUDOKU/)
 
 </div>
 
@@ -436,3 +436,4 @@ Hai domande o hai riscontrato un bug?
 [⬆ Torna su](#-sudoku-game)
 
 </div>
+
