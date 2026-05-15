@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tag per codifica caratteri e viewport responsive -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUDOKU</title>
+    
+    <!-- Favicon personalizzata -->
+    <link rel="icon" type="image/png" href="assets/img/icon.png">
+    
+    <!-- Foglio di stile principale -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Menu di navigazione tra pagine -->
+    <div>
+        <table>
+            <tr>
+                <td><a href="index.html">Gioca</a></td>
+                <td><a href="regole.html">Regole</a></td>
+            </tr>
+        </table>
+    </div>
+    
+    <!-- Container principale del gioco -->
+    <div class="container">
+        <h1>SUDOKU</h1>
+
+        <!-- Area messaggi (successo, errore, info) -->
+        <div id="message" class="message"></div>
+        
+        <!-- Area di gioco principale -->
+        <div class="game-area">
+            <div class="left-section">
+                <!-- Selezione livello di difficoltà (genera nuova partita al click) -->
+                <div class="difficulty">
+                    <button id="beginner" class="btn-difficulty">Principiante</button>
+                    <button id="easy" class="btn-difficulty">Facile</button>
+                    <button id="medium" class="btn-difficulty active">Medio</button>
+                    <button id="hard" class="btn-difficulty">Difficile</button>
+                    <button id="expert" class="btn-difficulty">Esperto</button>
+                    <button id="extreme" class="btn-difficulty">Estremo</button>
+                </div>
+                
+                <!-- Griglia Sudoku 9x9 generata dinamicamente da JavaScript -->
+                <div id="sudoku-board" class="sudoku-board"></div>
+            </div>
+            
+            <!-- Pannello destro con controlli e palette numeri -->
+            <div class="right-panel">
+                <div class="palette-controls">
+                    <!-- Timer con funzione pausa/riprendi -->
+                    <div class="timer">
+                        <button id="pause-btn" class="btn-palette" title="Pausa">⏸️</button>
+                        <span id="timer">00:00</span>
+                    </div>
+                    
+                    <!-- Pulsanti di controllo del gioco -->
+                    <div class="control-buttons">
+                        <button id="note-mode" class="btn-palette" title="Modalità Nota">✏️</button> <!-- Toggle modalità appunti -->
+                        <button id="hint" class="btn-palette" title="Suggerimento">💡</button> <!-- Riempie cella casuale (max 3) -->
+                        <button id="delete-cell" class="btn-palette" title="Cancella Cella">🗑️</button> <!-- Cancella cella selezionata -->
+                        <button id="undo" class="btn-palette" title="Torna Indietro">↶</button> <!-- Annulla ultima mossa -->
+                    </div>
+                </div>
+                
+                <!-- Palette per inserimento numeri 1-9 -->
+                <div class="number-palette">
+                    <h3>Numeri</h3>
+                    <div class="numbers-grid">
+                        <div class="number-btn" data-number="1">1</div>
+                        <div class="number-btn" data-number="2">2</div>
+                        <div class="number-btn" data-number="3">3</div>
+                        <div class="number-btn" data-number="4">4</div>
+                        <div class="number-btn" data-number="5">5</div>
+                        <div class="number-btn" data-number="6">6</div>
+                        <div class="number-btn" data-number="7">7</div>
+                        <div class="number-btn" data-number="8">8</div>
+                        <div class="number-btn" data-number="9">9</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Statistiche di gioco (errori e suggerimenti rimanenti) - attualmente nascosta -->
+        <div class="game-stats" style="display: none;">
+            <div class="stat">
+                <span>Errori: </span>
+                <span id="errors-count">0/3</span>
+            </div>
+            <div class="stat">
+                <span>Suggerimenti: </span>
+                <span id="hints-count">0/3</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script principale del gioco Sudoku -->
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,432 @@
+/* ============================================
+   RESET E CONFIGURAZIONE BASE
+   Stili per la pagina delle regole del Sudoku
+   ============================================ */
+
+/* Reset universale */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Variabili colore tema */
+:root {
+    --primary-color: #808080;  /* Grigio tema */
+    --dark-color: #4d4d4d;     /* Grigio scuro */
+}
+
+/* ============================================
+   BODY E LAYOUT GENERALE
+   ============================================ */
+
+/* Body con sfondo fisso */
+body {
+    font-family: 'Arial';
+    background-image: url('../img/sfondo3.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* ============================================
+   MENU NAVIGAZIONE
+   ============================================ */
+
+/* Stile menu superiore */
+body > div:first-child {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding: 15px 30px;
+    margin: 0 auto 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    max-width: max-content;
+}
+
+body > div:first-child table {
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+body > div:first-child td {
+    padding: 10px 20px;
+}
+
+body > div:first-child a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+body > div:first-child a:hover {
+    color: var(--primary-color);
+}
+
+/* ============================================
+   CONTAINER E TITOLO PRINCIPALE
+   ============================================ */
+
+/* Container principale pagina regole */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    margin-bottom: 40px;
+    font-size: 3em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
+}
+
+.content {
+    line-height: 1.8;
+    color: white;
+}
+
+/* ============================================
+   SEZIONE INTRODUTTIVA
+   ============================================ */
+
+/* Sezione obiettivo del gioco */
+.intro-section {
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.intro-section h2 {
+    color: white;
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+.intro-section p {
+    font-size: 1.2em;
+    line-height: 1.8;
+}
+
+/* ============================================
+   GRIGLIA REGOLE FONDAMENTALI
+   ============================================ */
+
+/* Sezione con le tre regole del Sudoku */
+.rules-grid {
+    margin-bottom: 50px;
+}
+
+.rules-grid h2 {
+    text-align: center;
+    color: white;
+    margin-bottom: 30px;
+    font-size: 2em;
+    border-bottom: 3px solid var(--primary-color);
+    padding-bottom: 15px;
+}
+
+.rules-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 20px;
+}
+
+/* ============================================
+   CARD DELLE REGOLE
+   ============================================ */
+
+/* Singola card regola con effetti hover */
+.rule-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    padding: 30px;
+    border-radius: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.rule-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.rule-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    border-color: var(--primary-color);
+}
+
+.rule-card:hover::before {
+    width: 100%;
+    opacity: 0.1;
+}
+
+/* Numero identificativo della regola (1, 2, 3) */
+.rule-number {
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.rule-card h3 {
+    color: white;
+    margin-bottom: 15px;
+    font-size: 1.4em;
+}
+
+.rule-card p {
+    margin: 0;
+    font-size: 1.05em;
+    line-height: 1.6;
+}
+
+/* ============================================
+   SEZIONE A DUE COLONNE (COME GIOCARE E STRATEGIE)
+   ============================================ */
+
+/* Layout a due colonne responsive */
+.two-column-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.column {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.column h2 {
+    color: white;
+    margin-bottom: 25px;
+    font-size: 1.8em;
+    border-bottom: 3px solid var(--primary-color);
+    padding-bottom: 10px;
+}
+
+/* ============================================
+   LISTE ORDINATE E NON ORDINATE
+   ============================================ */
+
+/* Lista passi numerati (Come si Gioca) */
+.steps {
+    list-style: none;
+    counter-reset: step-counter;
+    padding-left: 0;
+}
+
+.steps li {
+    counter-increment: step-counter;
+    margin: 15px 0;
+    padding: 15px 15px 15px 60px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.steps li:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateX(5px);
+}
+
+.steps li::before {
+    content: counter(step-counter);
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--primary-color);
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+/* Lista consigli con icona lampadina */
+.tips {
+    list-style: none;
+    padding-left: 0;
+}
+
+.tips li {
+    padding: 15px 15px 15px 50px;
+    margin: 12px 0;
+    background: rgba(255, 243, 205, 0.15);
+    border-radius: 10px;
+    position: relative;
+    border-left: 4px solid var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.tips li:hover {
+    background: rgba(255, 243, 205, 0.25);
+    transform: translateX(5px);
+}
+
+.tips li::before {
+    content: "💡";
+    position: absolute;
+    left: 15px;
+    font-size: 1.3em;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* ============================================
+   SEZIONE FUNZIONALITÀ DEL GIOCO
+   ============================================ */
+
+/* Sezione con griglia delle funzioni disponibili */
+.features-section {
+    margin-bottom: 50px;
+}
+
+.features-section h2 {
+    text-align: center;
+    color: white;
+    margin-bottom: 30px;
+    font-size: 2em;
+    border-bottom: 3px solid var(--primary-color);
+    padding-bottom: 15px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.12);
+    border-color: var(--primary-color);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.feature-icon {
+    font-size: 3em;
+    margin-bottom: 15px;
+}
+
+.feature-card h3 {
+    color: white;
+    margin-bottom: 10px;
+    font-size: 1.3em;
+}
+
+.feature-card p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+
+/* ============================================
+   CALL TO ACTION
+   ============================================ */
+
+/* Sezione con pulsante "Inizia a Giocare" */
+.cta {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 2px solid #ddd;
+}
+
+.play-button {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
+    color: white;
+    text-decoration: none;
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.3em;
+    transition: all 0.3s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.play-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN MOBILE
+   ============================================ */
+
+/* Adattamenti per tablet e mobile */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+    
+    .rule-section h2 {
+        font-size: 1.5em;
+    }
+    
+    .steps li {
+        padding-left: 55px;
+    }
+    
+    .steps li::before {
+        width: 30px;
+        height: 30px;
+        font-size: 1em;
+    }
+    
+    .difficulty-levels {
+        grid-template-columns: 1fr;
+    }
+}
